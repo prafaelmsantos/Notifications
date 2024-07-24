@@ -1,0 +1,12 @@
+﻿global using AutoMoreira.Base.Lib.Grpc.Notifications.Interfaces;
+global using AutoMoreira.Base.Lib.Grpc.Notifications.Models.SendClientEmail.Request;
+global using AutoMoreira.Base.Lib.Grpc.Notifications.Models.SendPasswordChangedEmail.Request;
+global using AutoMoreira.Base.Lib.Grpc.Notifications.Models.SendPasswordResetEmail;
+global using AutoMoreira.Base.Lib.Grpc.Notifications.Models.SendUserProfileUpdatedEmail.Request;
+global using AutoMoreira.Base.Lib.Grpc.Notifications.Models.SendWelcomeEmail.Request;
+global using Grpc.Core;
+global using Microsoft.Extensions.DependencyInjection;
+global using Notifications.GrpcServer.Services;
+global using Notifications.MessageProcessor.Interfaces;
+global using ProtoBuf.Grpc;
+global using ProtoBuf.Grpc.Reflection;

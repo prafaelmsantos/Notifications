@@ -1,0 +1,36 @@
+syntax = "proto3";
+package AutoMoreira.Base.Lib.Grpc.Notifications.Interfaces;
+
+message ResponseGrpc {
+   bool Success = 1;
+}
+message SendClientEmailRequestGrpc {
+   string Name = 1;
+   string Address = 2;
+}
+message SendPasswordChangedEmailRequestGrpc {
+   string Name = 1;
+   string Address = 2;
+   string Password = 3;
+}
+message SendPasswordResetEmailRequestGrpc {
+   string Name = 1;
+   string Address = 2;
+   string Password = 3;
+}
+message SendUserProfileUpdatedEmailRequestGrpc {
+   string Name = 1;
+   string Address = 2;
+}
+message SendWelcomeEmailRequestGrpc {
+   string Name = 1;
+   string Address = 2;
+   string Password = 3;
+}
+service NotificationsGrpcServerService {
+   rpc SendClientEmail (SendClientEmailRequestGrpc) returns (ResponseGrpc);
+   rpc SendPasswordChangedEmail (SendPasswordChangedEmailRequestGrpc) returns (ResponseGrpc);
+   rpc SendPasswordResetEmail (SendPasswordResetEmailRequestGrpc) returns (ResponseGrpc);
+   rpc SendUserProfileUpdatedEmail (SendUserProfileUpdatedEmailRequestGrpc) returns (ResponseGrpc);
+   rpc SendWelcomeEmail (SendWelcomeEmailRequestGrpc) returns (ResponseGrpc);
+}

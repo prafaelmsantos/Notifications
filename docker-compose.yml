@@ -1,0 +1,23 @@
+version: '3.4'
+
+networks:
+  notifications.api:
+
+services:
+  notifications.api:
+    container_name: notifications.api
+    image: ${DOCKER_REGISTRY-}notificationsapi
+    build:
+      context: .
+      dockerfile: src/API/Notifications.API/Dockerfile
+    ports:
+      - 5010:5010
+      - 81:81
+      - 5011:443
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80;http://+:81;
+      - GRPCCLIENT_NOTIFICATIONS_URL_WORK=http://host.docker.internal:81
+      - GRPCCLIENT_NOTIFICATIONS_URL=http://notifications.api:81
+    restart: always
+    networks:
+      - notifications.api

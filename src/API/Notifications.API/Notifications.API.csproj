@@ -11,7 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="AutoMoreira.Base.Lib" Version="1.1.0" />
+	<PackageReference Include="AutoMoreira.Base.Lib" Version="1.0.0" />
+    <PackageReference Include="HotChocolate.AspNetCore.Playground" Version="10.5.5" />
 	<PackageReference Include="Grpc.AspNetCore.HealthChecks" Version="2.46.0" />
 	<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.46.0" />
 	<PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
@@ -33,8 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Notifications.GraphQL\Notifications.GraphQL.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Notifications.GrpcServer\Notifications.GrpcServer.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Notifications.MessageProcessor\Notifications.MessageProcessor.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Notifications.Persistence\Notifications.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

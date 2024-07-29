@@ -1,14 +1,23 @@
-﻿using Base.Lib.Shared.HostSetup;
-using Notifications.GrpcServer.Builders;
-
-namespace Notifications.API
+﻿namespace Notifications.API
 {
     public class Program
     {
         public static async Task Main(string[] args)
         {
             await NotificationsGrpcBuilder.CreateNotificationsGrpcProtoFileAsync();
-            await CreateHostBuilder(args).Build().RunAsync();
+            IHost host = CreateHostBuilder(args).Build();
+
+            using (IServiceScope serviceScope = host.Services.CreateScope())
+            {
+                IServiceProvider services = serviceScope.ServiceProvider;
+                AppDbContext context = services.GetRequiredService<AppDbContext>();
+                Console.WriteLine("Update database started");
+                context.Database.SetCommandTimeout(TimeSpan.FromHours(2));
+                context.Database.EnsureCreated(); //Migrate();
+                Console.WriteLine("Update database ended");
+            }
+
+            await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

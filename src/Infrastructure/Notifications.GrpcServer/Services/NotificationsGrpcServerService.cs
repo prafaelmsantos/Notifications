@@ -1,6 +1,4 @@
-﻿using AutoMoreira.Base.Lib.Grpc.Base.Response;
-
-namespace Notifications.GrpcServer.Services
+﻿namespace Notifications.GrpcServer.Services
 {
     public class NotificationsGrpcServerService : INotificationsGrpcServerService
     {
@@ -16,24 +14,11 @@ namespace Notifications.GrpcServer.Services
         #endregion
 
         #region Public methods
-        public async Task<ResponseGrpc> SendWelcomeEmailAsync(SendWelcomeEmailRequestGrpc request, CallContext context = default)
-        {
-            await _emailService.SendWelcomeEmailAsync(request.Name, request.Address, request.Password);
-            return new ResponseGrpc();
-        }
-
-        public async Task<ResponseGrpc> SendUserProfileUpdatedEmailAsync(SendUserProfileUpdatedEmailRequestGrpc request, CallContext context = default)
-        {
-            await _emailService.SendUserProfileUpdatedEmailAsync(request.Name, request.Address);
-            return new ResponseGrpc();
-        }
-
-        public async Task<ResponseGrpc> SendClientEmailAsync(SendClientEmailRequestGrpc request, CallContext context = default)
+        public async Task SendWelcomeEmailAsync(SendWelcomeEmailRequestGrpc request, CallContext context = default)
         {
             try
             {
-                //await _emailService.SendClientEmailAsync(request.Name, request.Address);
-                return new ResponseGrpc();
+                await _emailService.SendWelcomeEmailAsync(request.Name, request.Address, request.Password);
             }
             catch (RpcException ex)
             {
@@ -41,16 +26,52 @@ namespace Notifications.GrpcServer.Services
             }
         }
 
-        public async Task<ResponseGrpc> SendPasswordChangedEmailAsync(SendPasswordChangedEmailRequestGrpc request, CallContext context = default)
+        public async Task SendUserProfileUpdatedEmailAsync(SendUserProfileUpdatedEmailRequestGrpc request, CallContext context = default)
         {
-            await _emailService.SendPasswordChangedEmailAsync(request.Name, request.Address, request.Password);
-            return new ResponseGrpc();
+            try
+            {
+                await _emailService.SendUserProfileUpdatedEmailAsync(request.Name, request.Address);
+            }
+            catch (RpcException ex)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, ex.Message));
+            }
         }
 
-        public async Task<ResponseGrpc> SendPasswordResetEmailAsync(SendPasswordResetEmailRequestGrpc request, CallContext context = default)
+        public async Task SendClientEmailAsync(SendClientEmailRequestGrpc request, CallContext context = default)
         {
-            await _emailService.SendPasswordResetEmailAsync(request.Name, request.Address, request.Password);
-            return new ResponseGrpc();
+            try
+            {
+                await _emailService.SendClientEmailAsync(request.Name, request.Address);
+            }
+            catch (RpcException ex)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, ex.Message));
+            }
+        }
+
+        public async Task SendPasswordChangedEmailAsync(SendPasswordChangedEmailRequestGrpc request, CallContext context = default)
+        {
+            try
+            {
+                await _emailService.SendPasswordChangedEmailAsync(request.Name, request.Address, request.Password);
+            }
+            catch (RpcException ex)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, ex.Message));
+            }
+        }
+
+        public async Task SendPasswordResetEmailAsync(SendPasswordResetEmailRequestGrpc request, CallContext context = default)
+        {
+            try
+            {
+                await _emailService.SendPasswordResetEmailAsync(request.Name, request.Address, request.Password);
+            }
+            catch (RpcException ex)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, ex.Message));
+            }
         }
 
         #endregion

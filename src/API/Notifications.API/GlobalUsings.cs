@@ -3,6 +3,7 @@ global using AutoMoreira.Base.Lib.Host;
 global using HotChocolate.AspNetCore;
 global using HotChocolate.AspNetCore.Playground;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Versioning;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Microsoft.OpenApi.Models;

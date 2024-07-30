@@ -2,7 +2,6 @@
 global using AutoMapper;
 global using Bogus;
 global using FluentAssertions;
-global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Query;
 global using Moq;
 global using Notifications.Core;

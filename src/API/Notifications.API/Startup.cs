@@ -43,8 +43,26 @@
                         Name = "Auto Moreira Portugal",
                         Email = "automoreiraportugal@gmail.com"
                     },
-                    Version = "v1"
+                    Version = "1.0"
                 });
+            });
+
+            services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.ReportApiVersions = true;
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                    new UrlSegmentApiVersionReader(),
+                    new QueryStringApiVersionReader("api-version"),
+                    new HeaderApiVersionReader("X-Version"),
+                    new MediaTypeApiVersionReader("X-Version"));
+            });
+
+            services.AddVersionedApiExplorer(o =>
+            {
+                o.GroupNameFormat = "'v'VVV";
+                o.SubstituteApiVersionInUrl = true;
             });
 
             //Cors
@@ -81,7 +99,6 @@
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AutoMoreira.API v1"));
-            //app.UseWelcomePage(new WelcomePageOptions { Path = new PathString("/swagger/index.html") });
 
             //HTTPS
             //app.UseHttpsRedirection();

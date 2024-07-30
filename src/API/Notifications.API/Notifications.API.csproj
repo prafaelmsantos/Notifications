@@ -16,6 +16,8 @@
 	<PackageReference Include="Grpc.AspNetCore.HealthChecks" Version="2.46.0" />
 	<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.46.0" />
 	<PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.32" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.32">
 	  <PrivateAssets>all</PrivateAssets>

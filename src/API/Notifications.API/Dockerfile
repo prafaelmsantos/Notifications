@@ -10,12 +10,16 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 
 #Add GitHub NuGet sources
-ARG GITHUB_PASSWORD
+ENV GITHUB_PASSWORD=passoword
 
 WORKDIR /src
-COPY ["src/API/Notifications.API/Notifications.API.csproj", "src/API/Notifications.API/"]
+COPY ["src/Core/Notifications.Core/Notifications.Core.csproj", "src/Core/Notifications.Core/"]
+COPY ["src/Infrastructure/Notifications.GraphQL/Notifications.GraphQL.csproj", "src/Infrastructure/Notifications.GraphQL/"]
 COPY ["src/Infrastructure/Notifications.GrpcServer/Notifications.GrpcServer.csproj", "src/Infrastructure/Notifications.GrpcServer/"]
 COPY ["src/Infrastructure/Notifications.MessageProcessor/Notifications.MessageProcessor.csproj", "src/Infrastructure/Notifications.MessageProcessor/"]
+COPY ["src/Infrastructure/Notifications.Persistence/Notifications.Persistence.csproj", "src/Infrastructure/Notifications.Persistence/"]
+COPY ["src/API/Notifications.API/Notifications.API.csproj", "src/API/Notifications.API/"]
+COPY ["src/Tests/Notifications.Tests/Notifications.Tests.csproj", "src/Tests/Notifications.Tests/"]
 RUN dotnet nuget add source -n github -u AZ -p ${GITHUB_PASSWORD} --store-password-in-clear-text https://nuget.pkg.github.com/prafaelmsantos/index.json
 RUN dotnet restore "./src/API/Notifications.API/Notifications.API.csproj"
 COPY . .

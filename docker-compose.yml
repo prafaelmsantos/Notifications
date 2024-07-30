@@ -12,11 +12,12 @@ services:
       dockerfile: src/API/Notifications.API/Dockerfile
     ports:
       - 5010:5010
-      - 81:81
+      - 9010:9010
       - 5011:443
     environment:
-      - ASPNETCORE_URLS=https://+:443;http://+:80;http://+:81;
-      - GRPCCLIENT_NOTIFICATIONS_URL=http://host.docker.internal:81
+      - ASPNETCORE_URLS=https://+:443;http://+:5010;http://+:9010;
+      - GRPCCLIENT_NOTIFICATIONS_URL=http://host.docker.internal:9010
+      - GITHUB_PASSWORD=password
     restart: always
     networks:
       - notifications.api

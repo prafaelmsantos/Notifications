@@ -6,7 +6,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
   <PropertyGroup>
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKwqXy6EqNUiUbj4QpF4ZUgAAAAACAAAAAAAQZgAAAAEAACAAAAA4hyk21HAJ6x5eHGWaazUqw8K6Et1xVpPXsUAHVGa2GAAAAAAOgAAAAAIAACAAAAAIAaFY4YcPlDCj/1KHDlY9/A+kdH9mtofVC5XeuRRYIyAAAAA4dACszyG2U9Vs09snZFZhdRg/7rdmMq+S32YVHEj3JEAAAAD/c1MkDsXAxG0X3oo706E3R39OtDlqKE8RCt0WPEqlkqwfYKcXddwMboSk5GlKmZ3tAtjpHdahCGzEaRxzBdVd</EncryptedPassword>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <History>True|2024-07-18T07:32:27.8211534Z||;True|2024-07-18T08:23:46.5229965+01:00||;</History>
-    <LastFailureDetails />
+    <History>True|2024-07-30T18:14:24.8302110Z||;True|2024-07-30T12:00:10.5753865+01:00||;False|2024-07-30T11:55:18.8675465+01:00||;False|2024-07-30T11:52:55.2829322+01:00||;False|2024-07-30T11:50:19.2964765+01:00||;True|2024-07-18T08:32:27.8211534+01:00||;True|2024-07-18T08:23:46.5229965+01:00||;</History>
+    <LastFailureDetails>
+    </LastFailureDetails>
   </PropertyGroup>
 </Project>

@@ -253,7 +253,7 @@
             ClientMessageDTO dto = ClientMessageBuilder.ClientMessageDTO();
             dto.Id = 0;
             ClientMessage clientMessage = ClientMessageBuilder.ClientMessage(dto);
-            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseResponseListDTOBuilder.InternalBaseResponseDTOList(null, clientMessage.Id);
+            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseBuilder.InternalBaseResponseDTOList(null, clientMessage.Id);
 
             _clientMessageRepositoryMock.Setup(repo => repo.FindByIdAsync(It.IsAny<long>())).ReturnsAsync(clientMessage);
 
@@ -276,7 +276,7 @@
         {
             // Arrange
             string errorMessage = DomainResource.ClientMessageNotFoundException;
-            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseResponseListDTOBuilder.InternalBaseResponseDTOList(errorMessage);
+            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseBuilder.InternalBaseResponseDTOList(errorMessage);
 
             _clientMessageRepositoryMock.Setup(repo => repo.FindByIdAsync(It.IsAny<long>())).ReturnsAsync(() => null!);
 
@@ -297,7 +297,7 @@
             // Arrange
             string errorMessage = DomainResource.DeleteClientMessagesAsyncException;
 
-            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseResponseListDTOBuilder.InternalBaseResponseDTOList(errorMessage);
+            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseBuilder.InternalBaseResponseDTOList(errorMessage);
 
             _clientMessageRepositoryMock.Setup(repo => repo.FindByIdAsync(It.IsAny<long>())).ThrowsAsync(new Exception());
 
@@ -321,7 +321,7 @@
             ClientMessage clientMessage = ClientMessageBuilder.ClientMessage(dto);
             string errorMessage = DomainResource.DeleteClientMessagesAsyncException;
 
-            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseResponseListDTOBuilder.InternalBaseResponseDTOList(errorMessage, clientMessage.Id);
+            List<InternalBaseResponseDTO> internalBaseResponseDTOs = InternalBaseBuilder.InternalBaseResponseDTOList(errorMessage, clientMessage.Id);
 
             _clientMessageRepositoryMock.Setup(repo => repo.FindByIdAsync(It.IsAny<long>())).ReturnsAsync(clientMessage);
 

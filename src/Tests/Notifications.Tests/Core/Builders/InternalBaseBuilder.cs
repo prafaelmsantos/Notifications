@@ -1,6 +1,6 @@
 ﻿namespace Notifications.Tests.Core.Builders
 {
-    public class InternalBaseResponseListDTOBuilder
+    public class InternalBaseBuilder
     {
         public static List<InternalBaseResponseDTO> InternalBaseResponseDTOList(string? errorMessage = null, long id = 0)
         {

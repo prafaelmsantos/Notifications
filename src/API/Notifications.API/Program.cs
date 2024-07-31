@@ -24,7 +24,6 @@
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-
                     webBuilder.UseStartup<Startup>();
                     webBuilder.SetKestrelOptions(false, true);
                 });

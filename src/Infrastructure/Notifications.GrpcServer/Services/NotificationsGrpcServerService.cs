@@ -38,18 +38,6 @@
             }
         }
 
-        public async Task SendClientEmailAsync(SendClientEmailRequestGrpc request, CallContext context = default)
-        {
-            try
-            {
-                await _emailService.SendClientEmailAsync(request.Name, request.Address);
-            }
-            catch (RpcException ex)
-            {
-                throw new RpcException(new Status(StatusCode.Internal, ex.Message));
-            }
-        }
-
         public async Task SendPasswordChangedEmailAsync(SendPasswordChangedEmailRequestGrpc request, CallContext context = default)
         {
             try

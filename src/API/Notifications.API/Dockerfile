@@ -10,7 +10,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 
 #Add GitHub NuGet sources
-ENV GITHUB_PASSWORD=password
+ARG GITHUB_PASSWORD
 
 WORKDIR /src
 COPY ["src/Core/Notifications.Core/Notifications.Core.csproj", "src/Core/Notifications.Core/"]
